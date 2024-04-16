@@ -10,6 +10,7 @@ class StartScreen extends StatelessWidget {
   Widget build(context) {
     return Center(
       child: Column(
+        mainAxisSize: MainAxisSize.min,
         children: [
           const Padding(
             padding: EdgeInsets.only(top: 50),
