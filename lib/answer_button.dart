@@ -9,7 +9,10 @@ class AnswerButton extends StatelessWidget {
 
   @override
   Widget build(context) {
-    return Column(
+    return Container(
+        margin: const EdgeInsets.all(2),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
         const SizedBox(
           height: 30,
@@ -26,6 +29,7 @@ class AnswerButton extends StatelessWidget {
           child: Text(answerText),
         ),
       ],
+        ),
     );
   }
 }
