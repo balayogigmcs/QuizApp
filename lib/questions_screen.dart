@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:quizapp/answer_button.dart';
 import 'package:quizapp/data/questions.dart';
 
@@ -11,29 +12,40 @@ class QuestionsScreen extends StatefulWidget {
 }
 
 class _QuestionsScreenState extends State<QuestionsScreen> {
+  var currentQuestionIndex = 0;
+
+  void answerQuestion() {
+    setState(() {
+      currentQuestionIndex++;
+    });
+  }
+
   @override
   Widget build(context) {
-    final currentQuestion = questions[0];
+    final currentQuestion = questions[currentQuestionIndex];
 
     return SizedBox(
       width: double.infinity,
       child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Text(
-              currentQuestion.text,
-              style: const TextStyle(color: Colors.amber,fontSize: 40),
-              textAlign: TextAlign.center,
-              
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Text(
+            currentQuestion.text,
+            style: GoogleFonts.lato(
+              fontSize: 24,
+              color: Colors.amber,
+              fontWeight: FontWeight.bold,
             ),
-            ...currentQuestion.getShuffledAnswers().map(
-              (answer) {
-                return AnswerButton(answerText: answer, onTap: () {});
-              },
-            ),
-          ],
-        ),
+            textAlign: TextAlign.center,
+          ),
+          ...currentQuestion.getShuffledAnswers().map(
+            (answer) {
+              return AnswerButton(answerText: answer, onTap: answerQuestion);
+            },
+          ),
+        ],
+      ),
     );
   }
 }
