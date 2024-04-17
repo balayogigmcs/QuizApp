@@ -14,7 +14,7 @@ class Quiz extends StatefulWidget {
 }
 
 class _QuizState extends State<Quiz> {
-   List<String> selectedAnswers = [];
+  List<String> selectedAnswers = [];
   var activeScreen = 'start-screen';
 
   void switchScreen() {
@@ -47,11 +47,15 @@ class _QuizState extends State<Quiz> {
               Color.fromARGB(255, 188, 188, 164)
             ], begin: Alignment.topLeft, end: Alignment.bottomRight),
           ),
-          child: activeScreen== 'results-screen' ? const ResultsScreen() :(activeScreen == 'start-screen'
-              ? StartScreen(switchScreen)
-              : QuestionsScreen(
-                  onSelectAnswer: chooseAnswer,
-          )),
+          child: activeScreen == 'results-screen'
+              ? ResultsScreen(
+                  choosenAnswers: selectedAnswers,
+                )
+              : (activeScreen == 'start-screen'
+                  ? StartScreen(switchScreen)
+                  : QuestionsScreen(
+                      onSelectAnswer: chooseAnswer,
+                    )),
         ),
       ),
     );
