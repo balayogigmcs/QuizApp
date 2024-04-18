@@ -1,6 +1,5 @@
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 
 class QuestionsSummary extends StatelessWidget {
   const QuestionsSummary(this.summaryData, {super.key});
@@ -22,7 +21,10 @@ class QuestionsSummary extends StatelessWidget {
                     Expanded(
                       child: Column(
                         children: [
-                          Text((data['question']) as String,style: const TextStyle(color: Colors.pink),),
+                          Text(
+                            (data['question']) as String,
+                            style: const TextStyle(color: Colors.red),
+                          ),
                           const SizedBox(
                             height: 5,
                           ),
@@ -34,7 +36,7 @@ class QuestionsSummary extends StatelessWidget {
                             (data['user_answer']) as String,
                             style: const TextStyle(color: Colors.deepOrange),
                           ),
-                           const SizedBox(
+                          const SizedBox(
                             height: 20,
                           ),
                         ],
